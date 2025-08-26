@@ -1,0 +1,14 @@
+{
+  "name": "learn-mysql",
+  "dockerFile": "Dockerfile",
+  "forwardPorts": [3306],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "cweijan.vscode-mysql-client2",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-mysql"
+      ]
+    }
+  }
+}
