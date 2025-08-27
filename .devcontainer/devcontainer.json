@@ -1,6 +1,10 @@
 {
   "name": "learn-mysql",
+  "image": "mcr.microsoft.com/devcontainers/universal",
   "features": {
     "ghcr.io/devcontainers-extra/features/mysql-homebrew:1": {}
-  }
+  },
+  "overrideCommand": false,
+  "forwardPorts": [3306],
+  "postStartCommand": "bash -lc 'export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH ; DATADIR=/home/linuxbrew/.linuxbrew/var/mysql ; [ -d \"$DATADIR\" ] || mysqld --initialize-insecure --datadir=\"$DATADIR\" ; pgrep -x mysqld >/dev/null || nohup mysqld_safe --datadir=\"$DATADIR\" --bind-address=127.0.0.1 --port=3306 > ~/mysqld.log 2>&1 & ; for i in $(seq 1 30); do mysqladmin -uroot status >/dev/null 2>&1 && break || sleep 1; done ; mysql -uroot -e \"CREATE DATABASE IF NOT EXISTS appdb;\" ; mysql -uroot -e \"ALTER USER IF EXISTS \\\"root\\\"@\\\"localhost\\\" IDENTIFIED BY \\\"root\\\";\" || true ; mysql -uroot -proot -e \"CREATE USER IF NOT EXISTS \\\"dev\\\"@\\\"%\\\" IDENTIFIED BY \\\"devpass\\\"; GRANT ALL PRIVILEGES ON appdb.* TO \\\"dev\\\"@\\\"%\\\"; FLUSH PRIVILEGES;\" '"
 }
