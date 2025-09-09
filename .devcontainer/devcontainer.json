@@ -1,6 +1,29 @@
 {
   "name": "learn-rdbms",
   "dockerComposeFile": "../docker-compose.yml",
-  "service": "mysql", // Replace "app" with the actual service name from your docker-compose.yml
-  "workspaceFolder": "/workspace" // Replace "/workspace" with the desired folder path
+  "service": "mysql",
+  "workspaceFolder": "/workspaces/mysql-codespace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "cweijan.vscode-database-client2"
+      ],
+      "settings": {
+        "sqltools.connections": [
+          {
+            "name": "Local MySQL (Codespace)",
+            "driver": "MySQL",
+            "server": "127.0.0.1",
+            "port": 3306,
+            "database": "mydatabase",
+            "username": "myuser",
+            "password": "mypassword"
+          }
+        ]
+      }
+    }
+  },
+  "forwardPorts": [
+    3306
+  ]
 }
