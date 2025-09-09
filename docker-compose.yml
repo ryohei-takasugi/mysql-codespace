@@ -11,10 +11,16 @@ services:
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
       TZ: Asia/Tokyo
+    command: >
+      --default-time-zone=+09:00
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_0900_ai_ci
+      --skip-character-set-client-handshake=1
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./conf.d:/etc/mysql/conf.d
       - ./initdb:/docker-entrypoint-initdb.d:ro
 
   # postgres:
