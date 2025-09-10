@@ -2,6 +2,7 @@
   "name": "learn-rdbms",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "mysql",
+  "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
       "extensions": [
