@@ -1,6 +1,7 @@
-# mysql-codespace
-SQL、実行計画の練習用
+# はじめに
+SQL、実行計画の練習用です。
 
+## ER図
 ```mermaid
 erDiagram
   SCHOOL ||--o{ STUDENT : "has"
@@ -35,3 +36,6 @@ erDiagram
     string 部活
   }
 ```
+
+## 接続方法
+![接続方法](./接続方法.png)
