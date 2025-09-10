@@ -1,15 +1,13 @@
-version: '3.8'
-
 services:
   mysql:
     image: mysql:8.0
     container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: mypassword
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      user: ${MYSQL_USER}
+      password: ${MYSQL_PASSWORD}
+      database: mydatabase
       TZ: Asia/Tokyo
     command: >
       --default-time-zone=+09:00
@@ -23,19 +21,5 @@ services:
       - ./conf.d:/etc/mysql/conf.d
       - ./initdb:/docker-entrypoint-initdb.d:ro
 
-  # postgres:
-  #   image: postgres:15
-  #   container_name: postgres
-  #   restart: always
-  #   environment:
-  #     POSTGRES_USER: myuser
-  #     POSTGRES_PASSWORD: mypassword
-  #     POSTGRES_DB: mydatabase
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
-
 volumes:
   mysql_data:
-  # postgres_data:
